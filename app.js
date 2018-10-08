@@ -10,10 +10,10 @@ var pass;
 const app = express();
 // instantiate client using your DB configurations
 const client = new Client({
-  database: 'db1kuekdp58lc2',
-  user: 'lcvrshwimmquro',
-  password: '15b7706d9e3dbc96894e66dd1269897bfa8402e2b9c8496e5d1340a9e054cbdc',
-  host: 'ec2-54-243-253-24.compute-1.amazonaws.com',
+  database: 'dvfdfp4vj3j1i',
+  user: 'jrhzycwpswvxsu',
+  password: '6167b01eac3aa94488ee654110440224ab95d442a93db8fb7fe83a5d107dc93c',
+  host: 'ec2-23-21-171-249.compute-1.amazonaws.com',
   port: 5432,
   ssl: true 
 }); 
