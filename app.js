@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 var path = require('path'); var { Client } = require('pg');
 const exphbs = require('express-handlebars');
+const bcrypt = require('bcrypt');
 
 
 // models
