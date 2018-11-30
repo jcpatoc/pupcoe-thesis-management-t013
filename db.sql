@@ -82,4 +82,4 @@ CREATE TABLE "class_students" (
   "student_id" INT REFERENCES users(id)
 );
 
-insert into users (fname, lname, email, password, user_type, is_admin, phone, employee_id) values ('Joanne', 'Patoc', 'patocjoanne9@gmail.com', 'admin123', 'Admin', 't', '09212752081','000');
+insert into users (fname, lname, email, password, user_type, is_admin, phone, employee_id) values ('Joanne', 'Patoc', 'patocjoanne9@gmail.com', 'Admin123', 'Admin', 't', '09212752081','000');

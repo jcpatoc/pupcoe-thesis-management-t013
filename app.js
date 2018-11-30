@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 var path = require('path'); var { Client } = require('pg');
 const exphbs = require('express-handlebars');
+const flash = require('connect-flash');
+//const bcrypt = require('bcrypt');
+
 
 
 // models
@@ -46,12 +49,14 @@ passport.use(new Strategy({
     usernameField: 'email',
     passwordField: 'password'
   },
-  function(email, password, cb) {
+  function(email, password, done) {
     User.getByEmail(email, function(user) {
-      if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
-      return cb(null, user);
-    });
+      if (!user) {  
+        console.log('no user exists')
+      return done(null, false) }
+      if (user.password != password) { return done(null, false); }
+      return done(null, user);
+          });
   }));
 
 passport.serializeUser(function(user, cb) {
@@ -82,10 +87,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
+app.use(session({
+  secret: 'admin123',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false,
+            maxAge: 10800000 }
+}))
+app.use(flash());
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
-app.use(session({ secret: 'admin123', resave: false, saveUninitialized: false }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
