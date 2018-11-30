@@ -3,9 +3,10 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-var path = require('path'); 
+var path = require('path'); var { Client } = require('pg');
 const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
+const flash = require('connect-flash')
 
 
 // models
@@ -25,15 +26,23 @@ const facultyRouter = require('./routes/faculty');
 const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
 
+const client = new Client({
+  database: 'dvfdfp4vj3j1i',
+  user: 'jrhzycwpswvxsu',
+  password: '6167b01eac3aa94488ee654110440224ab95d442a93db8fb7fe83a5d107dc93c',
+  host: 'ec2-23-21-171-249.compute-1.amazonaws.com',
+  port: 5432,
+  ssl: true 
+}); 
 
 
-//client.connect()
-//  .then(function () {
-//    console.log('connected to database');
-//  })
-//  .catch(function (err) {
-//    console.log('cannot connect to database!', err);
-//  });
+client.connect()
+  .then(function () {
+    console.log('connected to database');
+  })
+  .catch(function (err) {
+    console.log('cannot connect to database!', err);
+  });
 
 passport.use(new Strategy({
     usernameField: 'email',
@@ -59,6 +68,32 @@ passport.deserializeUser(function(id, cb) {
   });
 });
 
+//app.use(passport.initialize()); 
+//app.use(passport.session());
+
+passport.use(new Strategy({
+  usernameField: 'username',
+  passwordField: 'password'
+},
+function(username, password, done) {
+  user.getByUsername(username, function(user) {   
+    if (!user) { 
+      console.log('no user exists')
+      return done(null, false) 
+    }
+    bcrypt.compare(password, user.password).then(function(status) {
+      if (status == false) { 
+        console.log('incorrect password')
+        return done(null, false) 
+      }
+      console.log('logged in')
+      return done(null, user)
+    }).catch(e => {
+      console.log(e)
+    });
+
+ });
+}));
 
 // instantiate app
 const app = express();
@@ -74,11 +109,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
 // Initialize Passport and restore authentication state, if any, from the
 // session.
-app.use(session({ secret: 'admin123', resave: false, saveUninitialized: false }));
+app.use(cookieParser('secret'));
+app.use(session({
+  secret: 'admin123',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false,
+            maxAge: 10800000 }
+}))
+app.use(flash());
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 
