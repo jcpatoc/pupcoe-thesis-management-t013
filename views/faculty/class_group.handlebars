@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div>
+        <div style="margin-bottom: 2em">
+          <h2>Batch 2018</h2>
+          <h4>Section 1</h4>
+        </div>
+      </div>
+      <div>
+        <div style="margin: 1em">
+          <h4>Groups</h4>
+        </div>
+        <div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Group #</th>
+                  <th>Members</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each groupData}}
+                  <tr>
+                    <td>{{this.group_id}}</td>
+                    <td>{{this.last_name}}, {{this.first_name}} {{this.middle_name}} {{this.suffix}}</td>
+                    <td>
+                      <form action="/faculty/class/groups" method="POST">
+                        <input type="hidden" value="{{this.id}}" name="groupClusterId">
+                        <input type="submit" class="btn btn-danger" name="removeFromGroup" value="Remove">
+                      </form>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div>
+        <h3>Create Group</h3>
+        <hr>
+        <div class="form-group">
+          <form action="/faculty/class/groups" method="post">
+            <label>Group #</label>
+            <input type="number" class="form-control" name="groupName" required="">
+            <input type="submit" class="btn btn-success" name="createGroup" value="Create" style="margin-top: 15px">
+          </form>
+        </div>
+      </div>
+      <div>
+        <h3>Add Member to Group</h3>
+        <hr>
+        <form action="/faculty/class/groups" method="post">
+        <div class="form-inline">
+          <label>Group #</label>
+          <select name="groupId" class="form-control" required="">
+            {{#each groups}}
+              <option value="{{this.id}}">{{this.group_number}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Students</label>
+          <select class="form-control" multiple size="15" name="studentId" style="width: 100%" required="">
+            {{#each studentsWithoutGroup}}
+              <option value="{{this.student_id}}">{{this.last_name}}, {{this.first_name}} {{this.middle_name}} {{this.suffix}}</option>
+            {{/each}}
+          </select>
+          <input type="submit" class="btn btn-success" name="addStudentToGroup" value="Add" style="margin-top: 15px">
+        </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

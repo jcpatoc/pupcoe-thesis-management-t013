@@ -85,7 +85,7 @@ app.use(bodyParser.json());
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
-app.use(session({ secret: 'kahitAnoIto', resave: false, saveUninitialized: false }));
+app.use(session({ secret: 'admin123', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 

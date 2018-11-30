@@ -1,0 +1,115 @@
+<div class="container-fluid" style="margin: 0 5em">
+  <div class="row">
+
+    <div class="col-md-4" >
+      <h3>Group {{group.group_number}}</h3>
+      <hr>
+      {{#if mainThesis}}
+        <h4>Title</h4>
+        <label>{{mainThesis.title}}</label>
+        <h4>Schedule</h4>
+        <p>{{moment date=schedule.scheduled_date format="MM/DD/YYYY"}} {{schedule.start_time}} - {{schedule.end_time}}</p>
+      {{/if}}
+      <h4>Members</h4>
+      {{#each groupMembers}}
+        <p style="margin: 0 0">{{this.lname}}, {{this.fname}}</p>
+      {{/each}}
+      <hr>
+      <form action="/student/group" method="post">
+        <input type="hidden" name="groupId" value="{{group.group_id}}">
+        <div style="margin: 30px 0">
+          <h3>Submit Thesis Proposal</h3>
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="thesisTitle">
+            <label>Abstract</label>
+            <textarea class="form-control" name="thesisAbstract" rows="6" style="resize: none"></textarea>
+            <input type="submit" class="btn btn-success" name="thesisProposalSubmit" value="Submit" style="margin: 15px 0" {{#if noMainTopic}}disabled{{/if}}>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-8">
+      <div class="rows">
+        <div class="col-md-12">
+          <h3>List of Approved Thesis</h3>
+          <hr>
+
+          <div style="height: 25vh; overflow: auto" data-spy="scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each approvedThesis}}
+                  <tr>
+                    <td>{{this.proposals}}</td>
+                    <td>{{this.status}}</td>
+                    <td>
+                        <form action="/student/group" method="post" {{#unless noMainTopic}}class="hidden"{{/unless}}>
+                          
+                            <input type="hidden" name="thesisId" value="{{this.id}}">
+                            <input type="submit" class="btn btn-success hidden" name="makeMainThesis" id="makeMainThesis{{this.id}}" value="Choose" >
+                            <button type="button" class="btn btn-success makeMainThesisPlaceholder" name="" id="" value="{{this.id}}">Choose</button>
+                          
+                        </form>
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+      <div class="rows">
+        <div class="col-md-12">
+          <h3>List of Thesis Proposal</h3>
+          <hr>
+          <div style="height: 32vh; overflow: auto" data-spy="scroll">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Abstract</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each thesisProposals}}
+                  <tr>
+                    <td class="col-md-1">{{this.title}}</td>
+                    <td class="col-md-8"><textarea readonly="true" rows="4" style="resize: none; border: 0px; width: 100%">{{this.abstract}}</textarea></td>
+                    <td class="col-md-3">{{this.status}}</td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".makeMainThesisPlaceholder").click(function(){
+      // window.alert("asd");
+      var value = this.value;
+      // window.alert(value);
+      if (window.confirm("Are you sure?")) {
+        $("#makeMainThesis"+value).click();
+      }
+    })
+  });
+</script>

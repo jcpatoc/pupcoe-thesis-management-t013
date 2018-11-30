@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="rows">
+    <div class="col-md-5">
+      <form action="/student/thesis/all" method="POST">
+        <div class="form-inline">
+          <label>Search by Title: </label>
+          <input type="text" name="titleQuery">
+          <button type="submit" name="search"><span class=" glyphicon glyphicon-search" style=""></span></button>
+          <input type="submit" name="clearSearch" value="Clear Search">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="rows">
+    <div class="col-md-12">
+      <div>
+        <div class="pagination" style="font-size: 1.3em;">
+          
+          {{#paginate pagination type="previous"}}
+            <input type="hidden" value="&p={{n}}" id="previousN" name="">
+            <a {{#if disabled}}class="disabled"{{/if}} id="previous" href="?p={{n}}">❮</a>
+          {{/paginate}}
+         
+          {{#paginate pagination type="next"}}
+            <input type="hidden" value="&p={{n}}" id="nextN" name="">
+            <a {{#if disabled}}class="disabled"{{/if}} id="next" href="?p={{n}}">❯</a>
+          {{/paginate}}
+         
+        </div>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Abstract</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each thesisList}}
+            <tr>
+              <td>{{this.title}}</td>
+              <td>{{this.abstract}}</td>
+              <td>{{this.status}}</td>
+              <td>
+                <form>
+                  <input type="submit" name="details" class="btn btn-info" value="Details">
+                </form>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+</div>
