@@ -3,8 +3,9 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-var path = require('path'); var { Client } = require('pg');
+var path = require('path'); 
 const exphbs = require('express-handlebars');
+const bcrypt = require('bcrypt');
 
 
 // models
@@ -24,23 +25,15 @@ const facultyRouter = require('./routes/faculty');
 const loginRouter = require('./routes/login');
 const apiRouter = require('./routes/api');
 
-const client = new Client({
-  database: 'dvfdfp4vj3j1i',
-  user: 'jrhzycwpswvxsu',
-  password: '6167b01eac3aa94488ee654110440224ab95d442a93db8fb7fe83a5d107dc93c',
-  host: 'ec2-23-21-171-249.compute-1.amazonaws.com',
-  port: 5432,
-  ssl: true 
-}); 
 
 
-client.connect()
-  .then(function () {
-    console.log('connected to database');
-  })
-  .catch(function (err) {
-    console.log('cannot connect to database!', err);
-  });
+//client.connect()
+//  .then(function () {
+//    console.log('connected to database');
+//  })
+//  .catch(function (err) {
+//    console.log('cannot connect to database!', err);
+//  });
 
 passport.use(new Strategy({
     usernameField: 'email',
