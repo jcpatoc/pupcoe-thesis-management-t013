@@ -1,0 +1,69 @@
+<div class="container">
+  <div>
+    <div>
+      <h2>Batch {{classData.batch}}</h2>
+      <h4>Section {{classData.section}}</h4>
+    </div>
+    <div>
+      <form action="/faculty/class/groups" method="post">
+        <input type="hidden" value="{{classData.id}}" name="classId">
+        <input type="submit" class="btn"  name="manageGroups" value="Manage Groups">
+      </form>
+    </div>
+    
+  </div>
+
+  {{!-- <div>
+    <div style="display: inline-block">
+      <table class="table-condensed">
+        <thead>
+          <tr>
+            <tr>
+              <th>Group 1</th>
+            </tr>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aiver Keith De Guzman</td>
+          </tr>
+          <tr>
+            <td>Aiver Keith De Guzman</td>
+          </tr>
+          <tr>
+            <td>Aiver Keith De Guzman</td>
+          </tr>
+          <tr>
+            <td>Aiver Keith De Guzman</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div> --}}
+
+
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Student Number</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each studentsData}}
+          <tr>
+            <td>{{this.student_id}}</td>
+            <td>{{this.first_name}} {{this.middle_name}} {{this.last_name}} {{this.suffix}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.phone_number}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

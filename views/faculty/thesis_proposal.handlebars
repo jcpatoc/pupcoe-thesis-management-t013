@@ -1,0 +1,78 @@
+<div class="container-fluid" style="margin: 0 50px">
+
+  <div class="rows">
+    <div class="col-md-12">
+      <h3>Thesis Proposals</h3>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Title</th>
+              <th>Abstract</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each forApprovalThesis}}
+              <tr>
+                <td>{{this.group_id}}</td>
+                <td>{{this.proposals}}</td>
+
+                <td>
+                  <form action="/faculty/proposals" method="post">
+                    <input type="hidden" name="thesisId" value="{{this.thesis_id}}">
+                    <div class="form-group">
+                      <input type="submit" name="acceptThis" class="btn btn-success form-control" value="Approve">
+                      <input type="submit" name="rejectThis" class="btn btn-danger form-control" value="Reject">
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+  {{#if committee}}
+    <div class="rows">
+      <div class="col-md-12">
+        <h3>For Committee Approval</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Title</th>
+              <th>Abstract</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each forCommitteeApprovalThesis}}
+              <tr>
+                <td>{{this.group_id}}</td>
+                <td>{{this.proposals}}</td>
+
+                <td>
+                  <form action="/faculty/proposals" method="post">
+                    <input type="hidden" name="thesisId" value="{{this.thesis_id}}">
+                    <div class="form-group">
+                      <input type="submit" name="acceptThisCommittee" class="btn btn-success form-control" value="Approve">
+                      <input type="submit" name="rejectThisCommittee" class="btn btn-danger form-control" value="Reject">
+                    </div>
+                  </form>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  {{/if}}
+
+</div>

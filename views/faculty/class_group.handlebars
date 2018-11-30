@@ -25,7 +25,7 @@
                 {{#each groupData}}
                   <tr>
                     <td>{{this.group_id}}</td>
-                    <td>{{this.last_name}}, {{this.first_name}} {{this.middle_name}} {{this.suffix}}</td>
+                    <td>{{this.lname}}, {{this.fname}}</td>
                     <td>
                       <form action="/faculty/class/groups" method="POST">
                         <input type="hidden" value="{{this.id}}" name="groupClusterId">
