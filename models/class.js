@@ -5,11 +5,11 @@ var Class = {
     const query = `
       SELECT
         c.id,
-        c.batch_id,
-        c.section_id,
+        c.batch,
+        c.section,
         u.id as adviser_id,
-        u.fname as adviser_first_name,
-        u.lname as adviser_last_name
+        u.first_name as adviser_first_name,
+        u.last_name as adviser_last_name
       FROM classes c
       INNER JOIN users u on c.adviser = u.id
       WHERE c.id = ${id}
@@ -28,18 +28,21 @@ var Class = {
   getByStudentId: (studentId) => {
     const query = `
       SELECT 
-        cl.batch_id,
-        cl.section_id,
-        u.fname ,
-        u.lname,
+        cl.batch,
+        cl.section,
+        u.first_name ,
+        u.last_name,
         u.email,
-        us.fname as adviser_fname,
-        us.lname as adviser_lname,
-        us.email as adviser_email
-      FROM "class_students" c
+        us.first_name as adviser_fname,
+        us.last_name as adviser_lname,
+        us.email as adviser_email,
+        us.id as adviser_id,
+        g.group_id
+      FROM "classStudents" c
       INNER JOIN classes cl on c.class_id = cl.id
       INNER JOIN users u on c.student_id = u.id
       INNER JOIN users us on cl.adviser = us.id
+      INNER JOIN group_members g on u.id = g.student_id
       WHERE c.student_id = ${studentId}
     `;
     var promise = new Promise((resolve, reject) => {
@@ -57,7 +60,7 @@ var Class = {
   getStudentsByClassId: (classId) => {
     const query = `
       SELECT *
-      FROM "class_students" c
+      FROM "classStudents" c
       INNER JOIN users u on c.student_id = u.id
       WHERE c.class_id = ${classId}
     `;
@@ -76,11 +79,11 @@ var Class = {
     const query = `
       SELECT
         c.id,
-        c.batches,
-        c.sections,
+        c.batch,
+        c.section,
         u.id as adviser_id,
-        u.fname as adviser_first_name,
-        u.lname as adviser_last_name
+        u.first_name as adviser_first_name,
+        u.last_name as adviser_last_name
       FROM classes c
       INNER JOIN users u on c.adviser = u.id
     `;
@@ -99,8 +102,8 @@ var Class = {
     const query = `
       SELECT
         id,
-        batch_id,
-        section_id
+        batch,
+        section
       FROM classes 
       WHERE adviser=${facultyId}
     `;
@@ -121,11 +124,11 @@ var Class = {
     // check first if user with given email already exists
     const promise = new Promise((resolve, reject) => {
       var createQuery = `
-        INSERT INTO classes(batch_id, section_id, adviser_id)
+        INSERT INTO classes(batch, section, adviser)
         VALUES (
-          '${data.batch_id}',
-          '${data.section_id}',
-          '${data.adviser_id}'
+          '${data.batch}',
+          '${data.section}',
+          '${data.adviser}'
         )
         RETURNING *
       `;
@@ -146,7 +149,7 @@ var Class = {
         values.push(`('${classId}', '${studentId}')`)
       })
       var query = `
-        INSERT INTO "class_students"(class_id, student_id)
+        INSERT INTO "classStudents"(class_id, student_id)
         VALUES ${values.join(',')}
         RETURNING *
       `;
