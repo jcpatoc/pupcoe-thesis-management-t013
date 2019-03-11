@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">Thesis Proposals</h1>
+</div>
+<a href="/faculty/thesis/adviser-approval">
+  <h6 class="h6" style="margin-left: 25%;">Go to pending Thesis Approvals for Advisers</h6>
+</a>
+{{#if is_Committee}}
+<a href="/faculty/thesis/committee-approval">
+  <h6 class="h6" style="margin-left: 25%;">Go to pending Thesis Approvals for Committee Members</h6>
+</a>
+{{else}}
+
+{{/if}}
+
+<div>
+  <table class="table table-sm" style="margin-left: 25%; width: 70%">
+  <thead>
+    <tr>
+      <th scope="col">Thesis ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Abstract</th>
+      <th scope="col">Group #</th>
+      <th scope="col">Adviser Approval</th>
+      <th scope="col">Committee Approval</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each thesis}}
+    <tr>
+      <td>{{this.id}}</td>
+      <th scope="row">{{this.title}}</th>
+      <td>{{this.abstract}}</td>
+      <td>{{this.group_id}}</td>
+      {{!-- {{#if this.is_faculty}}✓{{else}} {{/if}} --}}
+      <td>{{#if this.adviser_approved}}✓ {{else}}{{#if this.adviser_rejected}}X {{else}}Pending {{/if}}{{/if}}</td>
+      <td>{{#if this.committee_approved}}✓{{else}}X{{/if}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>

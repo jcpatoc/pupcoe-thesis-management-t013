@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">{{type}} Defense Details</h1>
+</div>
+<div>
+  <table class="table table-sm" style="margin-left: 25%; width: 70%">
+    <thead>
+      <tr>
+        <th scope="col" >Thesis ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Abstract</th>
+        <th scope="col">Year</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each list}}
+      <tr>
+        <td>{{this.id}}</td>
+        <th scope="row">{{this.title}}</th>
+        <td>{{this.abstract}}</td>
+        <td>{{this.year}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

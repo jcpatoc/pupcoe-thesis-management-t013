@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">Proposed Theses for Committee Approval</h1>
+  {{!-- <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <a href="/student/thesis/thesis-create" class="btn btn-sm btn-outline-secondary">Add Thesis</a>
+    </div>
+  </div> --}}
+</div>
+<div>
+  <table class="table table-sm" style="margin-left: 25%; width: 70%">
+  <thead>
+    <tr>
+      <th scope="col">Thesis ID</th>
+      <th scope="col">Title</th>
+      <th scope="col">Abstract</th>
+      <th scope="col">Group #</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each committee_approval}}
+    <tr>
+      <td>{{this.id}}</td>
+      <th scope="row">{{this.title}}</th>
+      <td>{{this.abstract}}</td>
+      <td>{{this.group_id}}</td>
+      {{!-- {{#if this.is_admin}}✓{{else}} {{/if}} --}}
+      <td>
+        <form action="/faculty/thesis/committee-approval/approve" method="POST">
+          {{!-- <input name="thesisId" value="{{this.id}}"> --}}
+          <button value="{{this.id}}" name="thesisId" type="submit">Approve</button>
+        </form>
+      </td>
+     <td>
+        <form action="/faculty/thesis/committee-approval/reject" method="POST">
+          <button value="{{this.id}}" name="thesisId" type="submit">Reject</button> 
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>

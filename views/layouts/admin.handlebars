@@ -1,176 +1,115 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
-  <head>
-  
-        <meta charset="utf-8"/>
-        <title>PUPCOE THESIS MANAGEMENT</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta content="" name="description"/>
-        <meta content="" name="author"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="style3.css"  type="text/css" rel="stylesheet" >
-   
-
-<style>
-body {
-    font-family: "Lato", sans-serif;
-}
-
-/* Fixed sidenav, full height */
-.sidenav {
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #fcb46c;
-    overflow-x: hidden;
-    padding-top: 20px;
-    border-style: : 1px solid black;
-}
-
-/* Style the sidenav links and the dropdown button */
-.sidenav a, .dropdown-btn {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-    display: block;
-    border: none;
-    background: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    outline: none;
-}
-
-/* On mouse-over */
-.sidenav a:hover, .dropdown-btn:hover {
-    color: gray;
-}
-
-/* Main content */
-.main {
-    margin-left: 200px; /* Same as the width of the sidenav */
-    font-size: 17px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
-}
-
-/* Add an active class to the active dropdown button */
-.active {
-    background-color: orange;
-    color: white;
-}
-
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-.dropdown-container {
-    display: none;
-    background-color: white;
-    padding-left: 8px;
-}
-
-/* Optional: Style the caret down icon */
-.fa-caret-down {
-    float: right;
-    padding-right: 8px;
-}
-
-/* Some media queries for responsiveness */
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
-
-.header {
-  padding: 15px 16px;
-  background: lightgrey;
-  color: black;
-  margin-bottom: 10px;
-}
-
-.content {
-  padding: 16px;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + .content {
-  padding-top: 102px;
-}
-
-.logout {
-    float:right;
-    text-decoration:none;
-    position: relative;
-}
-.logout-button a button {
-   position: relative; 
-  background-color: gray;
-    color: white;
-    padding: 13px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius:5%;
-}
-</style>
-</head>       
-<body>
-
-<div class="sidenav">
-         <a class="logo-area" href="/admin">
-            <img class="mb-4" src="http://pupcoedb.appspot.com/images/logo.png" alt="" width="72" height="72">
-         </a>
+	<head>
+	<title> BSCpE Thesis Management </title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/modal.css">
+	<script src="../js/fontawesome-all.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	
+	<!--     Fonts and icons     -->
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<!-- CSS Files -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../css/now-ui-dashboard.css" rel="stylesheet" />
 
 
-   <a href="./dashboard.html">Dashboard</a>
-    <a href="/admin/faculties">Faculties</a>
-    <a href="/admin/students">Students</a>
-    <a href="/admin/classes">Classes</a>
-
-</div>
-
-<div class="main">
-<body class="">
-  <div class="wrapper ">
+ <body>
     <div class="sidebar" data-color="orange">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
+      
       <div class="logo">
+        <a href="/" class="simple-text logo-normal">
+          BSCpE Thesis Management
         </a>
-          <div class="header" id="myHeader">
-  <h2>BSCOE THESIS MANAGEMENT | Admin</h2>
-</div>
-
       </div>
-     </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="/admin">
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/faculties">
+              <p>Faculties</p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/committee">
+              <p>Committee</p>
+            </a>
+          </li>
+		  
+          <li>
+            <a href="/admin/students">
+              <p>Students</p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/classes">
+              <p>Classes</p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/thesis">
+              <p>Thesis Proposals</p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/mor">
+              <p>MOR Defense</p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/dp1">
+              <p>DP-I Defense </p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/dp2">
+              <p>DP-II Defense </p>
+            </a>
+          </li>
+		  <li>
+            <a href="/admin/finished">
+              <p>Completed Thesis</p>
+            </a>
+          </li>
+          
+<li>
+            <a href="/logout">
+              <p>Logout</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+	<main style="margin-top: 3%">
       {{{body}}}
-    </main>
+	  
+	</main>
 
  <!--   Core JS Files   -->
-  <script src="./js/core/jquery.min.js"></script>
-  <script src="./js/core/popper.min.js"></script>
-  <script src="./js/core/bootstrap.min.js"></script>
-  <script src="./js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="./js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="./js/plugins/bootstrap-notify.js"></script>
+  <script src="../js/core/jquery.min.js"></script>
+  <script src="../js/core/popper.min.js"></script>
+  <script src="../js/core/bootstrap.min.js"></script>
+  <script src="../js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script
+	  src="https://code.jquery.com/jquery-2.2.4.min.js"
+	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	  crossorigin="anonymous"></script>
+  <script src="../javascripts/bootstrap.min.js"></script>
+  <script src="../javascripts/scripts.js"> </script>
+
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="./js/now-ui-dashboard.min.js?v=1.2.0" type="text/javascript"></script>
+  <script src="../js/now-ui-dashboard.min.js?v=1.2.0" type="text/javascript"></script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
+
     });
   </script>

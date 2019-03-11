@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">Set Grade and Comments</h1>
+</div>
+<div>
+  <h2 class='h3' style="margin-left: 25%;">Thesis Name: {{data.title}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Defense ID: {{data.id}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Abstract: {{data.abstract}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Group Number: {{data.group_id}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Schedule: {{data.schedule}}</h2>
+</div>
+
+<div>
+  <div class='row'>
+    <div class='col-md-8'>
+      <form class="needs-validation" novalidate="" action="/admin/{{defense_type}}/grade/{{data.id}}/add-grades" method="POST" style="margin-left: 25%;">
+        <div class="mb-3">
+          <label for="section">Grade</label>
+          <select id="grades"  name="grades" class="form-control">
+            <option>Passed with minor revision</option>
+            <option>Passed with major revision</option>
+            <option>Failed</option> 
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="comment">Comment</label>
+          <textarea rows="4" class="form-control" id="comment" value="" required="" name="comment"></textarea>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

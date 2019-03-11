@@ -21,27 +21,31 @@
     <link href="signin.css" rel="stylesheet">
   </head>
 
-  <body class="text-center">
-    <div style="width: 100%;margin-left: -30%; margin-bottom: 10%"><center><h3>Thesis Management System</h3></center></div>
-    <br>
-    <form class="login" method="POST" action="">
-    
-      <img class="mb-4" src="http://pupcoedb.appspot.com/images/logo.png" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="email" class="sr-only">Email address</label>
-      <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
-      <label for="password" class="sr-only">Password</label>
-      <input type="password" name="password" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
-      <input style="margin-left: auto; margin-right: auto; width: 50%" type="submit" name="login" class="btn btn-md" value="Login">
-       <p>Not a member?&ensp;<a href="/signup">Sign up now!</a></p>
+ <!-- Header -->
+<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color:  #FF7C4C;">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/home"><img src="mm.jpg" style="width: 80px; height: 80px;"></a>
+	</div>
+</nav>
 
-      <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p> 
-    </form>
+</nav>
+<!-- End of Header -->
+<!-- Landing Page -->
+
+		
+	<section class="intro">
+		<div class="inner">
+			<div class="content">
+				<h2>PUP Computer Engineering Thesis Management System</h2>
+		
+			<form method="POST" action='login' role="login">
+                <input type="email" id="inputEmail" name="email" placeholder="Email" required class="form-control input-lg"  />
+				<input type="password" name="password" class="form-control input-lg" id="inputPassword" placeholder="Password" required="" />
+				<button type="submit" name="" class="btn btn-lg btn-primary btn-block" value="Login" style="background-color: #FF7F50">Log in</button>
+			</form>
+			
+			</div>
+		</div>
+	</section>
   </body>
 </html>
-

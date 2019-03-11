@@ -1,0 +1,45 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">{{defense_type}} Defense Details</h1>
+</div>
+<div>
+  <table class="table table-sm" style="margin-left: 25%; width: 70%" >
+    <thead>
+      <tr>
+        <th scope="col">Thesis ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Abstract</th>
+        <th scope="col">Group #</th>
+        <th scope="col">Year</th>
+        <th scope="col">Schedule</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{thesis_id}}</td>
+        <th scope="row">{{title}}</th>
+        <td>{{abstract}}</td>
+        <td>{{group_id}}</td>
+        <td>{{year}}</td>
+        <td>{{schedule}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 class="h3" style="margin-left: 25%;">Grade: {{grades}}</h1>
+  <h1 class="h3" style="margin-left: 25%;">Comments: </h1>
+  <table class="table table-sm" style="margin-left: 25%; width: 70%">
+    <thead>
+      <tr>
+        <th scope="col">Panel Name</th>
+        <th scope="col">Comments</th>
+    </thead>
+    <tbody>
+      {{#each comments}}
+      <tr>
+        <td>{{this.first_name}} {{this.last_name}}</td>
+        <th scope="row">{{this.comment}}</th>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">Set Schedule and Panel</h1>
+</div>
+<div>
+  <h2 class='h3' style="margin-left: 25%;">Thesis Name: {{data.title}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Defense ID: {{data.id}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Abstract: {{data.abstract}}</h2>
+  <h2 class='h4' style="margin-left: 25%;">Group Number: {{data.group_id}}</h2>
+</div>
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%;">Set Schedule and Panel</h1>
+</div>
+<div>
+  <div class='row'>
+    <div class='col-md-8'>
+      <form class="needs-validation" novalidate="" action="/admin/{{defense_type}}/set-sched-and-panel/{{data.id}}" method="POST" style="margin-left: 25%;">
+        <div class="mb-3">
+          <label for="schedule">Schedule</label>
+          <input type="text" class="form-control" id="schedule" placeholder="Dec. 25, 2018" required="" name="schedule">
+            <div class="invalid-feedback">
+              Please enter a schedule.
+            </div>
+        </div>
+        <hr class="mb-4">
+        <h4>Head Panel</h4>
+        <div class="mb-3">
+          <select id="head_panel_id" name="head_panel_id" class="form-control">
+          {{#each faculties}}
+            <option value="{{this.id}}">{{this.first_name}} {{this.last_name}}</option>
+          {{/each}}
+          </select>
+        </div>
+        <h4>Panel Member</h4>
+        <div class="mb-3">
+          <select id="faculty_id" name="faculty_id" class="form-control">
+          {{#each faculties}}
+            <option value="{{this.id}}">{{this.first_name}} {{this.last_name}}</option>
+          {{/each}}
+          </select>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

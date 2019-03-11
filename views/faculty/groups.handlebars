@@ -1,23 +1,28 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2" style="margin-left: 25%;">My Classes</h1>
+  <h1 class="h2" style="margin-left: 25%;">Groups</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <a href="/faculty/group-create" class="btn btn-sm btn-outline-secondary">Add Group</a>
+    </div>
+  </div>
 </div>
 <div>
   <table class="table table-sm" style="margin-left: 25%; width: 70%">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Batch</th>
+      <th scope="col">Group #</th>
+      <th scope="col">Name</th>
       <th scope="col">Section</th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-    {{#each classes}}
+    {{#each groups}}
     <tr>
       <th scope="row">{{this.id}}</th>
-      <td>{{this.batch}}</td>
+      <td>{{this.name}}</td>
       <td>{{this.section}}</td>
-      <td><a href='/faculty/class/{{this.id}}'>view</a></td>
+      <td><a href='/faculty/group/{{this.id}}'>view</a></td>
     </tr>
     {{/each}}
   </tbody>

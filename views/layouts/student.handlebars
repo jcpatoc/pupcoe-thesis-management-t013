@@ -1,70 +1,80 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 	<head>
+	<title> BSCpE Thesis Management </title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/modal.css">
+	<script src="../js/fontawesome-all.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="./css/home.css">
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="./css/modal.css">
-	<script src="./js/fontawesome-all.js"></script>
-	<script src="./js/jquery.js"></script>
-	<script src="./js/popper.js"></script>
-	<script src="./js/bootstrap.js"></script>
-	  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-  <!-- CSS Files -->
-  <link href="./css/bootstrap.min.css" rel="stylesheet" />
-  <link href="./css/now-ui-dashboard.css?v=1.2.0" rel="stylesheet" />
-
-<body class="">
-  <div class="wrapper ">
+	<!--     Fonts and icons     -->
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+	<!-- CSS Files -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../css/now-ui-dashboard.css" rel="stylesheet" />
+ <body>
     <div class="sidebar" data-color="orange">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
+      
       <div class="logo">
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="/" class="simple-text logo-normal">
           BSCpE Thesis Management
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active ">
-            <a href="/faculty">
-              <i class="now-ui-icons design_app"></i>
+          <li>
+            <a href="/student">
               <p>Dashboard</p>
             </a>
           </li>
           
-          <li>
-            <a href="/faculty/classes">
-              <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Classess</p>
+		  <li>
+            <a href="/student/thesis">
+              <p>Thesis Proposals</p>
             </a>
           </li>
-<li>
+		  <li>
+            <a href="/student/mor">
+              <p>MOR Defense</p>
+            </a>
+          </li>
+		  <li>
+            <a href="/student/dp1">
+              <p>DP-I Defense </p>
+            </a>
+          </li>
+		  <li>
+            <a href="/student/dp2">
+              <p>DP-II Defense </p>
+            </a>
+          </li>
+		  <li>
+            <a href="/student/finished">
+              <p>Completed Thesis</p>
+            </a>
+          </li>
+			<li>
             <a href="/logout">
-              <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Logout</p>
             </a>
           </li>
         </ul>
       </div>
     </div>
+</div></div></div></div></div>
 
+<main style="margin-top: 3%">
       {{{body}}}
-    </main>
+	  
+	  </main>
 
  <!--   Core JS Files   -->
   <script src="./js/core/jquery.min.js"></script>
   <script src="./js/core/popper.min.js"></script>
   <script src="./js/core/bootstrap.min.js"></script>
   <script src="./js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
   <script src="./js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -75,5 +85,6 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
+
     });
   </script>

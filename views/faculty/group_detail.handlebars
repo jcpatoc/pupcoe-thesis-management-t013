@@ -1,20 +1,14 @@
-
-   
-
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h3" style="margin-left: 25%;">Batch {{classData.batch}}-{{classData.section}} Students</h1>
+  <h1 class="h3" style="margin-left: 25%;">Group {{groupData.id}} Members</h1>
+  <h1 class="h3" style="margin-left: 25%;">Section {{groupData.section}}</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
-      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#add-students">Add Student</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#add-students">Add Members</button>
     </div>
-
   </div>
 </div>
 <div>
-  <h1 class="h4"style="margin-left: 25%;">Adviser: {{classData.adviser_first_name}} {{classData.adviser_last_name}}</h1>
-  <table class="table table-sm"style="margin-left: 25%; width: 70%">
+  <table class="table table-sm" style="margin-left: 25%; width: 70%">
   <thead>
     <tr>
       <th scope="col">Student Number</th>
@@ -25,19 +19,22 @@
     </tr>
   </thead>
   <tbody>
-    {{#each classStudents}}
+    {{#each group_members}}
     <tr>
       <th scope="row">{{this.student_number}}</th>
       <td>{{this.first_name}} {{this.last_name}}</td>
       <td>{{this.email}}</td>
       <td>{{this.phone}}</td>
-      <td><a href='/admin/student/{{this.id}}'>view</a></td>
+      <td>
+        <form action="/faculty/group/{{this.group_id}}/remove-student/{{this.student_id}}" method="POST">
+          <button type="submit">Remove</button> 
+        </form>
+      </td>
     </tr>
     {{/each}}
   </tbody>
 </table>
 </div>
-
 
 <div class="modal fade" id="add-students" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -49,7 +46,7 @@
         </button>
       </div>
       <div class="modal-body">
-          <select multiple id="student-list" data-class-id="{{classData.id}}">
+          <select multiple id="student-list" data-group-id="{{groupData.id}}">
               {{#each allStudents}}
                 <option value='{{this.id}}'>
                   <div><em>{{this.first_name}} {{this.last_name}}</em></div>
@@ -60,10 +57,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="save-class-students">Save changes</button>
+        <button type="button" class="btn btn-primary" id="save-group-students">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
-

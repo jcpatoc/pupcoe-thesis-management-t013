@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2" style="margin-left: 25%">Defense Details</h1>
+</div>
+<div>
+  <h2 class='h3' style="margin-left: 25%">Thesis Name: {{data.title}}</h2>
+  <h2 class='h4'style="margin-left: 25%">Defense ID: {{data.id}}</h2>
+  <h2 class='h4'style="margin-left: 25%">Abstract: {{data.abstract}}</h2>
+  <h2 class='h4'style="margin-left: 25%">Group Number: {{data.group_id}}</h2>
+  <h2 class='h4'style="margin-left: 25%">Schedule: {{data.schedule}}</h2>
+  <h2 class='h4'style="margin-left: 25%">Panel Members: </h2>
+  <table class="table table-sm" style="margin-left: 25%">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each panel_members}}
+      <tr>
+        <td>{{this.first_name}} {{this.last_name}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
